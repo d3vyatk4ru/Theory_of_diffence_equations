@@ -28,7 +28,7 @@ function [] = lab_1(A)
     % enter syms variable for solve system
     syms x y z
 
-    disp('“Ó˜Í‡ ÔÓÍÓˇ: ');
+    disp('–¢–æ—á–∫–∞ –ø–æ–∫–æ—è: ');
 
     s = solve(A *[x; y; z] == 0);
 
@@ -40,11 +40,11 @@ function [] = lab_1(A)
     [V, D] = eig(As);
 
     % display to ComWin
-    disp('≈igen vectors: ');
+    disp('–ïigen vectors: ');
     disp(V);
 
     % display to ComWin
-    disp('≈igen values: ');
+    disp('–ïigen values: ');
     disp(D);
 
     % creating transform matrix
@@ -75,8 +75,10 @@ function [] = lab_1(A)
     Y = u*V(2, 1) + v*V(2, 2);
     Z = u*V(3, 1) + v*V(3, 2);
     
-    plot3(X, Y, Z, 'y');
+    p = plot3(X, Y, Z, 'y');
+    plot3(0, 0, 0, '-s', 'Color', 'red')
     plot3(0, 0, 0, '-o', 'Color', 'black')
     
     grid on
 end
+
