@@ -16,9 +16,9 @@ function  [] = draw_pic(A, H, R, N, U)
     
         [~, oX] = ode45(f, [0.7 0], cond(:, i));
 
-        plot3(oX(:, 1), oX(:, 2), oX(:, 3), 'b');
+        p = plot3(oX(:, 1), oX(:, 2), oX(:, 3), 'b');
+        p.LineWidth = 1;
         hold on
     
     end
-
 end

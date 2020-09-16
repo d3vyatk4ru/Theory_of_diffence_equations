@@ -28,7 +28,7 @@ function [] = lab_1(A)
     % enter syms variable for solve system
     syms x y z
 
-    disp('–¢–æ—á–∫–∞ –ø–æ–∫–æ—è: ');
+    disp('“Ó˜Í‡ ÔÓÍÓˇ: ');
 
     s = solve(A *[x; y; z] == 0);
 
@@ -40,11 +40,11 @@ function [] = lab_1(A)
     [V, D] = eig(As);
 
     % display to ComWin
-    disp('–ïigen vectors: ');
+    disp('≈igen vectors: ');
     disp(V);
 
     % display to ComWin
-    disp('–ïigen values: ');
+    disp('≈igen values: ');
     disp(D);
 
     % creating transform matrix
@@ -60,25 +60,33 @@ function [] = lab_1(A)
 
     draw_pic(A, H, R, N, double(V));
     hold on
+    draw_pic(A, -H, R, N, double(V));
     
     % painting line
-    fplot3(V(1, 3) *t, V(2, 3)*t, V(3, 3), [-60 60], 'r')
+    fplot3(V(1, 3) *t, V(2, 3)*t, V(3, 3), [-120 120], 'k',...
+        'LineWidth', 2)
     
     hold on
     
     % painting plane
     
     % creating grid
-    [u, v] = meshgrid(-40:40);
+    [u, v] = meshgrid(-70:140:70);
+    
+    V = double(V);
     
     X = u*V(1, 1) + v*V(1, 2);
     Y = u*V(2, 1) + v*V(2, 2);
     Z = u*V(3, 1) + v*V(3, 2);
     
-    p = plot3(X, Y, Z, 'y');
-    plot3(0, 0, 0, '-s', 'Color', 'red')
-    plot3(0, 0, 0, '-o', 'Color', 'black')
+    % FaceAlpha --- low invisible plane
     
+    surf(X, Y, Z,'FaceAlpha','flat', 'FaceColor','yellow');
+    
+    % painting point of stable
+    plot3(0, 0, 0, '-o', 'Color', 'red', 'LineWidth', 4)
+    
+    axis equal
     grid on
+    hold off
 end
-
