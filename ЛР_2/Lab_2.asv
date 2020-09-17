@@ -12,10 +12,41 @@ end
 %Finding the Jacobian
 disp('якобиан системы: ')
 J = jacobian([3*x+3*y+x*y+y^2, x+y^2],[x, y]);
+
 for i = 1:3
-    fprintf('ƒл€ %d-го положени€ равновеси€:', i);
-    disp('')
-    disp(subs_J = subs(J, [x y] ,[s.x(i) s.y(i)]))
+   
+    fprintf('ƒл€ %d-го положени€ равновеси€:\n', i);
+    disp('1) матрица системы первого приближени€:');
+    
+    % calculating jacobian in points
+    subs_J = subs(J, [x y] ,[s.x(i) s.y(i)]);
+    disp(subs_J)
+    disp('2) cобственные значени€: ')
+    
+    % finding eigen values
     r = eig(subs_J);
-    fprintf('ƒл€ %d-го положени€ равновеси€: %d %d', [i, r(1,1), r(2,1)]);
+    fprintf('%d %d\n\n', [r(1,1), r(2,1)]);
 end
+
+
+
+n = 100;
+m = 100;
+p = 100;
+
+[X, Y, Z] = meshgrid(1:n, 1:m, 1:p);
+streamslice(X, Y, Z, 3*x + 3*y + x*y +y^2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
