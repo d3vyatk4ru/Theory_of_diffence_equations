@@ -7,7 +7,7 @@ function [] = Lab_2()
     % for all stab point
     all = zeros(2, 3);
 
-    disp('Положения равновесия системы: ')
+    disp('Balance positions of the system: ')
     for i = 1:3
         fprintf('x = %d,  y = %d;\n', [s.x(i), s.y(i)]);
         all(1, i) = s.x(i);
@@ -15,18 +15,18 @@ function [] = Lab_2()
     end
 
     % Finding the Jacobian
-    disp('Якобиан системы: ')
+    disp('Jacobian of systems: ')
     J = jacobian([3*x+3*y+x*y+y^2, x+y^2],[x, y]);
 
     for i = 1:3
    
-        fprintf('Для %d-го положения равновесия:\n', i);
-        disp('1) матрица системы первого приближения:');
+        fprintf('For %d-го balance positions:\n', i);
+        disp('1) matrix of first approximation:');
     
         % calculating jacobian in points
         subs_J = subs(J, [x y] ,[double(s.x(i)) double(s.y(i))]);
         disp(subs_J)
-        disp('2) cобственные значения: ')
+        disp('2) eigen values: ')
     
         % finding eigen values
         [v, r] = eig(double(subs_J));
