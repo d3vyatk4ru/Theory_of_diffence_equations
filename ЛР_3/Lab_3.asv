@@ -30,7 +30,6 @@ function [] = Lab_3 ()
     % It's basis in our space
     basis = [[x^2; 0], [x*y; 0], [y^2; 0], [0; x^2], [0; x*y], [0; y^2]];
     % helpList = [x^2, x*y, y^2];
-    tempList = [];
     
     A_x = A * [x; y];
     
@@ -47,18 +46,15 @@ function [] = Lab_3 ()
        % Дальше записываем получишиеся координаты в матрицу, это и будет 1
        % столбец матрицы перехода. Одна строчка кода --- одна координата 
        % (один элемент столбца).
-       for j = 1:6
-            tempList(j) = subs(colMatrix(1), [x*y y^2], [0 0]) / x^2;
-            tempList(j) = subs(colMatrix(1), [x^2 y^2], [0 0]) / (x*y);
-            tempList(j) = subs(colMatrix(1), [x^2 x*y], [0 0]) / y^2;
        
-            tempList(j) = subs(colMatrix(2), [x*y y^2], [0 0]) / x^2;
-            tempList(j) = subs(colMatrix(2), [x^2 y^2], [0 0]) / (x*y);
-            tempList(j) = subs(colMatrix(2), [x^2 x*y], [0 0]) / y^2;
-       end
+       trMatrix(1, i) = subs(colMatrix(1), [x*y y^2], [0 0]) / x^2;
+       trMatrix(2, i) = subs(colMatrix(1), [x^2 y^2], [0 0]) / (x*y);
+       trMatrix(3, i) = subs(colMatrix(1), [x^2 x*y], [0 0]) / y^2;
+       
+       trMatrix(4, i) = subs(colMatrix(2), [x*y y^2], [0 0]) / x^2;
+       trMatrix(5, i) = subs(colMatrix(2), [x^2 y^2], [0 0]) / (x*y);
+       trMatrix(6, i) = subs(colMatrix(2), [x^2 x*y], [0 0]) / y^2;
     end
-    
-    trMatrix(:, i) = tempList;
     
     % display matrix
     disp('Transform matrix: ')
@@ -69,7 +65,5 @@ function [] = Lab_3 ()
     E6 = eye(6);
     traMatrE = rref([trMatrix E6]);
     
-    S = [trMatrix(:, 1:4) E6(:, 1:2)];
-    
-    disp(S);
+    S = [trMatrix(:, )]
 end
