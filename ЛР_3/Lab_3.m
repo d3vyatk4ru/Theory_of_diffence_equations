@@ -1,15 +1,17 @@
 function [] = Lab_3 ()
     % equilibrium position (conditional task)
-    bal_pos = [0, 0];
+    eq_pos = [0 0];
 
     % enter symbols variable
     syms x y 
+    % Заданная система
+    system = [(1+x)*(1-y)-cos(x-y), exp(x-y)-cos(x+y)];
     
     % ----------------- FINDING LINEAR APPROXIMATE ------------------------
     
     % finding jacobian
     disp('Jacoby matrix:');
-    J = jacobian([(1+x)*(1-y)-cos(x-y), exp(x-y)-cos(x+y)], [x, y]);
+    J = jacobian(system, [x, y]);
     disp(J);
     
     % change variable into real number(on equilibrium position)
@@ -47,29 +49,58 @@ function [] = Lab_3 ()
        % Дальше записываем получишиеся координаты в матрицу, это и будет 1
        % столбец матрицы перехода. Одна строчка кода --- одна координата 
        % (один элемент столбца).
-       for j = 1:6
-            tempList(j) = subs(colMatrix(1), [x*y y^2], [0 0]) / x^2;
-            tempList(j) = subs(colMatrix(1), [x^2 y^2], [0 0]) / (x*y);
-            tempList(j) = subs(colMatrix(1), [x^2 x*y], [0 0]) / y^2;
        
-            tempList(j) = subs(colMatrix(2), [x*y y^2], [0 0]) / x^2;
-            tempList(j) = subs(colMatrix(2), [x^2 y^2], [0 0]) / (x*y);
-            tempList(j) = subs(colMatrix(2), [x^2 x*y], [0 0]) / y^2;
-       end
+        trMatrix(1, i) = subs(colMatrix(1), [x*y y^2], eq_pos) / x^2;
+        trMatrix(2, i) = subs(colMatrix(1), [x^2 y^2], eq_pos) / (x*y);
+        trMatrix(3, i) = subs(colMatrix(1), [x^2 x*y], eq_pos) / y^2;
+       
+        trMatrix(4, i) = subs(colMatrix(2), [x*y y^2], eq_pos) / x^2;
+        trMatrix(5, i) = subs(colMatrix(2), [x^2 y^2], eq_pos) / (x*y);
+        trMatrix(6, i) = subs(colMatrix(2), [x^2 x*y], eq_pos) / y^2;
     end
     
-    trMatrix(:, i) = tempList;
-    
     % display matrix
-    disp('Transform matrix: ')
+    disp('Матрица линейного оператора: ')
     disp(trMatrix);
     
     % finding ker
     
     E6 = eye(6);
-    traMatrE = rref([trMatrix E6]);
+    trMatrE = rref([trMatrix E6]);
     
     S = [trMatrix(:, 1:4) E6(:, 1:2)];
     
+    disp('Матрица перехода: ')
     disp(S);
+    
+    % вектор
+    f2 = simplify(taylor(system, [x y], 'order', 3) - ...
+                            taylor(system, [x y], 'order', 2));
+                        
+    F2(1) = subs(f2(1), [x*y y^2], eq_pos) / x^2;
+    F2(2) = subs(f2(1), [x^2 y^2], eq_pos) / (x*y);
+    F2(3) = subs(f2(1), [x^2 x*y], eq_pos) / y^2;
+    F2(4) = subs(f2(2), [x*y y^2], eq_pos) / x^2;
+    F2(5) = subs(f2(2), [x^2 y^2], eq_pos) / (x*y);
+    F2(6) = subs(f2(2), [x^2 x*y], eq_pos) / y^2;
+    
+    G2 = S\F2';
+    G2(1:4) = zeros(4, 1);
+    
+    g2 = S*G2;
+    
+    paintPhase(eq_pos);
+end
+
+function [] = paintPhase(point)
+
+        [X, Y] = meshgrid(point(1) - 1: 0.01 : point(1) + 1, ...
+            point(2) - 1 : 0.01 : point(2) + 1);
+        
+        % my nonlinear system
+        U = (1 + X).*(1 - Y) - cos(X - Y);
+        V = exp(X - Y) - cos(X + Y);
+        
+        % painting vector 
+        streamslice(X, Y, U, V, 4);
 end

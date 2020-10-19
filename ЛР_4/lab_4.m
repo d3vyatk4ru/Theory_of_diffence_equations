@@ -27,7 +27,9 @@ function [] = lab_4 ()
     equilibriumX = all(1, 1);
     equilibriumY = all(2, 1);
     
+    % Puankare();
     % painting Phase trajectory
+    figure
     paintPhase([equilibriumX, equilibriumY]);
     hold on;
     
@@ -37,7 +39,7 @@ function [] = lab_4 ()
     % Не используем глобальные переменные, потому что
     % функция не расчитана на таковые.
     % painting equilibrium position 
-    plot(all(1, 1), all(2, 1) ,'*');
+    plot(all(1, 1), all(2, 1) ,'o');
 
     multiplic_cicle(X, Y);
     
@@ -57,34 +59,38 @@ function [] = paintPhase(point)
 end
 
 function [loc_X, loc_Y] = build_curv()
+
     % feature of global variable in MATLAB
     global T;
     global equilibriumX;
     global equilibriumY
     
     step = 1e-2;
-    eps = 1e-2;
-    h = (0:step:10);
+    eps = 1e-4;
+    h = (0:step:5);
     % make cycle curve
-    for startPosX = (equilibriumX + 0.1) : step : (equilibriumX + 5)
-        % enter start point for integrate in ode45
-        cond = [startPosX; equilibriumY];
+    
+    opts = odeset('RelTol', 1e-6, 'AbsTol', 1e-6, 'Events', @stopInt);
+    [~, X] = ode45(@f, h, [equilibriumX + 0.1; equilibriumY], opts);
+    
+    while abs(X(1, 1) - X(size(X, 1), 1)) >= eps
         
         % enter setting for curve
         opts = odeset('RelTol', 1e-6, 'AbsTol', 1e-6, 'Events', @stopInt);
         
+        % enter start point for integrate in ode45
+        cond = [X(size(X, 1), 1); equilibriumY];
+        
         % integration
         [t, X] = ode45(@f, h, cond, opts);
-        
-        % painting if accuracy lower the epsilon
-        if abs(startPosX - X(size(X, 1), 1)) < eps
-            plot(X(:, 1) , X(:, 2), 'r', 'LineWidth', 1);
-            disp('Период цикла:');
-            T = t;
-            disp(t(size(t)));
-            break;
-        end
+       
     end
+    
+    % painting if accuracy lower the epsilon
+    plot(X(:, 1) , X(:, 2), 'r', 'LineWidth', 1);
+    disp('Период цикла:');
+    T = t;
+    disp(t(size(t)));
     
     % enter limits
     xlim([equilibriumX - 4 equilibriumX + 6]);
@@ -142,4 +148,39 @@ function [dx] = f(t, x)
     % it's nonlinear system
     dx(1) = -x(1)^2 + 17/9*x(1)*x(2) - 9/10*x(2)^2 + 40/9*x(1) - 19/3*x(2) + 8/15;
     dx(2) = -x(1)^2 + 7/4*x(1)*x(2) - x(2)^2 + 4*x(1) - 9/2*x(2) + 3/2;
+    
+end
+
+function [] = Puankare()
+
+    global equilibriumY;
+    global equilibriumX;
+
+% Строим отображение Пуанкаре
+step = 0.01; 
+eps = 1e-4; 
+k = 0; 
+X_p = [];
+Y_p = [];
+
+for j = (equilibriumX) : step : (equilibriumX + 3)
+    opts = odeset('RelTol',1e-7,'AbsTol',1e-7,'Events', @stopInt);
+    
+    [~, X] = ode45(@f,(0:step:1),[j; equilibriumY], opts);
+    
+    k = k + 1;
+    X_p(k) = j;
+    Y_p(k) = X(size(X, 1), 1);
+    if Y_p(k) - X_p(k) < 0.01
+        temp = X_p(k);
+    end
+    % Находим точку, в окрестности которой находится цикл
+end
+
+plot(X_p - equilibriumX, Y_p - X_p);
+hold on
+% plot(temp, 0,'o','LineWidth', 1);
+title('Отображениe Пуанкаре');
+grid on
+
 end
