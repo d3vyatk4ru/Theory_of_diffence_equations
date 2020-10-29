@@ -84,12 +84,21 @@ function [] = Lab_3 ()
     F2(5) = subs(f2(2), [x^2 y^2], eq_pos) / (x*y);
     F2(6) = subs(f2(2), [x^2 x*y], eq_pos) / y^2;
     
+    % переводим в новый базис
     G2 = S\F2';
+    
+    % Зануляем первые 4 координаты 
     G2(1:4) = zeros(4, 1);
     
-    g2 = S*G2;
+    % Переврдим в новый --- это и есть нормальная форма 2го порядка
+    g2 = S*G2
     
+    % фазовый портрет системы
     paintPhase(eq_pos);
+    
+    % фазовый портрет ормальной формы
+    figure;
+    paintNormForm(eq_pos);
 end
 
 function [] = paintPhase(point)
@@ -100,6 +109,19 @@ function [] = paintPhase(point)
         % my nonlinear system
         U = (1 + X).*(1 - Y) - cos(X - Y);
         V = exp(X - Y) - cos(X + Y);
+        
+        % painting vector 
+        streamslice(X, Y, U, V, 4);
+end
+
+function [] = paintNormForm(point)
+
+        [X, Y] = meshgrid(point(1) - 1: 0.01 : point(1) + 1, ...
+            point(2) - 1 : 0.01 : point(2) + 1);
+        
+        % my nonlinear system
+        U = X - Y + 4*X.^2 - 7*X.*Y;
+        V = X - Y;
         
         % painting vector 
         streamslice(X, Y, U, V, 4);
