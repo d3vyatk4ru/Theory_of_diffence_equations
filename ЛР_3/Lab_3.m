@@ -84,19 +84,19 @@ function [] = Lab_3 ()
     F2(5) = subs(f2(2), [x^2 y^2], eq_pos) / (x*y);
     F2(6) = subs(f2(2), [x^2 x*y], eq_pos) / y^2;
     
-    % переводим в новый базис
+    % transfer to new basis
     G2 = S\F2';
     
-    % Зануляем первые 4 координаты 
+    % To zeros first 4 coordinates 
     G2(1:4) = zeros(4, 1);
     
-    % Переврдим в новый --- это и есть нормальная форма 2го порядка
+    % tranfer to old basis --- this is normal'naya foem 2nd degree
     g2 = S*G2
     
-    % фазовый портрет системы
+    % Phase pictur of system
     paintPhase(eq_pos);
     
-    % фазовый портрет ормальной формы
+    % Phase picture normal'noi form
     figure;
     paintNormForm(eq_pos);
 end
