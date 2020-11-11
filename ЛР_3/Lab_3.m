@@ -5,7 +5,8 @@ function [] = Lab_3 ()
     % enter symbols variable
     syms x y 
     % Заданная система
-    system = [(1+x)*(1-y)-cos(x-y), exp(x-y)-cos(x+y)];
+    system = [-x^2 + 17/9*x*y - 9/10*y^2 + 40/9*x - 19/3*y + 8/15,...
+              -x^2 + 7/4*x*y - y^2 + 4*x - 9/2*y + 3/2];
     
     % ----------------- FINDING LINEAR APPROXIMATE ------------------------
     

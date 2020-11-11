@@ -12,14 +12,16 @@ function [] = lab_4 ()
     % for all stab point
     all = zeros(2, 2);
     
+    disp("Equilibrium positions: ")
+    
     for i = 1:2
-        fprintf('x = %d,  y = %d;\n', [s.x(i), s.y(i)]);
+        fprintf('x = %d,  y = %d;\n', [double(s.x(i)), double(s.y(i))]);
         all(1, i) = double(s.x(i));
         all(2, i) = double(s.y(i));
     end
     
-    % ������ �������� ������ ���� ��������� ����������, ��� ���
-    % ������ �������� ������ � ��� ������������� �� �����.
+    disp('');
+    
     % enter global variable because dont use paremetrs in fucntion
     global equilibriumY; 
     global equilibriumX;
@@ -27,27 +29,29 @@ function [] = lab_4 ()
     equilibriumX = all(1, 1);
     equilibriumY = all(2, 1);
     
-    % Puankare();
+    Puankare();
     % painting Phase trajectory
     figure
     paintPhase([equilibriumX, equilibriumY]);
     hold on;
     
+    xlim([equilibriumX - 4 equilibriumX + 8]);
+    ylim([equilibriumY - 4 equilibriumY + 6]);
+    
+    % painting equilibrium position 
+    plot(all(1, 1), all(2, 1) ,'o');
+    plot(all(1, 2), all(2, 2) ,'o');
+    
     % painting cicle and calculate period
     [X, Y] = build_curv();
     
-    % �� ���������� ���������� ����������, ������ ���
-    % ������� �� ��������� �� �������.
-    % painting equilibrium position 
-    plot(all(1, 1), all(2, 1) ,'o');
-
     multiplic_cicle(X, Y);
     
 end
 
 function [] = paintPhase(point)
 
-        [X, Y] = meshgrid(point(1) -8: 0.05 : point(1) + 8  , ...
+        [X, Y] = meshgrid(point(1) -8: 0.05 : point(1) + 12  , ...
             point(2) - 8 : 0.05 : point(2) + 8);
         
         % my nonlinear system
@@ -86,16 +90,18 @@ function [loc_X, loc_Y] = build_curv()
        
     end
     
-    % painting if accuracy lower the epsilon
+    % painting if accuracy lower then epsilon
     plot(X(:, 1) , X(:, 2), 'r', 'LineWidth', 1);
-    disp('������ �����:');
+    disp('Cycle period:');
     T = t;
-    disp(t(size(t)));
+    t_1 = t(size(t));
+    disp(t_1(1));
     
     % enter limits
     xlim([equilibriumX - 4 equilibriumX + 6]);
     ylim([equilibriumY - 4 equilibriumY + 6]);
     
+    % write the results
     loc_X = X(:, 1);
     loc_Y = X(:, 2);
 end
@@ -138,7 +144,8 @@ function [] = multiplic_cicle(X, Y)
     
     [~, E] = eig(C);
     
-    disp(E);
+    disp("Multiplicators of cycle: ")
+    disp(diag(E));
 
 end
 
@@ -156,7 +163,6 @@ function [] = Puankare()
     global equilibriumY;
     global equilibriumX;
 
-% ������ ����������� ��������
 step = 0.01; 
 eps = 1e-4; 
 k = 0; 
@@ -174,13 +180,12 @@ for j = (equilibriumX) : step : (equilibriumX + 3)
     if Y_p(k) - X_p(k) < 0.01
         temp = X_p(k);
     end
-    % ������� �����, � ����������� ������� ��������� ����
 end
 
 plot(X_p - equilibriumX, Y_p - X_p);
 hold on
-% plot(temp, 0,'o','LineWidth', 1);
-title('����������e ��������');
+title('Puankare map');
 grid on
 
 end
+
