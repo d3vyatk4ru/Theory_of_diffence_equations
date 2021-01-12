@@ -169,10 +169,10 @@ k = 0;
 X_p = [];
 Y_p = [];
 
-for j = (equilibriumX) : step : (equilibriumX + 3)
+for j = (equilibriumX + eps) : step : (equilibriumX + 3)
     opts = odeset('RelTol', 1e-7,'AbsTol',1e-7,'Events', @stopInt);
     
-    [~, X] = ode45(@f,(0:step:1),[j; equilibriumY], opts);
+    [~, X] = ode45(@f, (0:step:4), [j; equilibriumY], opts);
     
     k = k + 1;
     X_p(k) = j;

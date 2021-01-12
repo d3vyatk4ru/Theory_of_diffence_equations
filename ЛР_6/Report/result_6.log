@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  16 DEC 2020 16:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.15)  27 DEC 2020 14:36
 entering extended mode
-**./result.tex
-(result.tex
+**./result_6.tex
+(result_6.tex
 LaTeX2e <2018-12-01>
 (D:\LaTex_\tex/latex/base\article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -487,20 +487,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 Package hyperref Info: Option `unicode' set `true' on input line 47.
 Package hyperref Info: Option `colorlinks' set `false' on input line 47.
- (result.aux
+ (result_6.aux
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 20.
 
 (D:\LaTex_\tex/latex/cyrillic\t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-)<<t2a.cmap>>
-
-LaTeX Warning: Label `fig1' multiply defined.
-
-
-LaTeX Warning: Label `fig1' multiply defined.
-
-)
-\openout1 = `result.aux'.
+)<<t2a.cmap>>)
+\openout1 = `result_6.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
@@ -520,7 +513,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
- (D:\LaTex_\tex/context/base/mkii\supp-pdf.mkii
+
+(D:\LaTex_\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count113
 \scratchdimen=\dimen120
@@ -559,92 +553,90 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 47.
 LaTeX Info: Redefining \pageref on input line 47.
 LaTeX Info: Redefining \nameref on input line 47.
- (result.out) (result.out)
+ (result_6.out)
+(result_6.out)
 \@outlinefile=\write3
-\openout3 = `result.out'.
+\openout3 = `result_6.out'.
 
-<emblema.pdf, id=32, 476.01839pt x 534.79799pt>
+<emblema.pdf, id=16, 476.01839pt x 534.79799pt>
 File: emblema.pdf Graphic file (type pdf)
 <use emblema.pdf>
-Package pdftex.def Info: emblema.pdf  used on input line 52.
+Package pdftex.def Info: emblema.pdf  used on input line 53.
 (pdftex.def)             Requested size: 90.44443pt x 101.61267pt.
 <<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
-Overfull \hbox (4.1906pt too wide) detected at line 52
+Overfull \hbox (4.1906pt too wide) detected at line 53
 \T2A/cmr/m/it/12 А.Н. Канатников 
  []
 
 [1
 
 {C:/Users/Danya/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./emblema.p
-df>] (result.toc)
-\tf@toc=\write4
-\openout4 = `result.toc'.
-
- [2]
-<Phase_all_points.png, id=67, 526.96875pt x 395.22656pt>
-File: Phase_all_points.png Graphic file (type png)
-<use Phase_all_points.png>
-Package pdftex.def Info: Phase_all_points.png  used on input line 82.
-(pdftex.def)             Requested size: 353.06721pt x 264.80042pt.
- [3
-
- <./Phase_all_points.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
-
+df>]
+Overfull \hbox (6.57664pt too wide) in paragraph at lines 56--57
+[]\T2A/cmr/m/n/12 Для за-дан-ной си-сте-мы 3-го по-ряд-ка и за-дан-ной ло-ка-ли
+-зи-ру-ю-щей функ-ции $\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; y
+; z\OT1/cmr/m/n/12 )$
  []
 
-<Puankare_pic.png, id=82, 526.96875pt x 395.22656pt>
-File: Puankare_pic.png Graphic file (type png)
-<use Puankare_pic.png>
-Package pdftex.def Info: Puankare_pic.png  used on input line 96.
-(pdftex.def)             Requested size: 316.18369pt x 237.13776pt.
-<Phase.png, id=83, 526.96875pt x 395.22656pt>
-File: Phase.png Graphic file (type png)
-<use Phase.png>
-Package pdftex.def Info: Phase.png  used on input line 101.
-(pdftex.def)             Requested size: 353.06721pt x 264.80042pt.
-[4] [5 <./Puankare_pic.png (PNG copy)> <./Phase.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
- [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
- (result.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 138.
-Package rerunfilecheck Info: File `result.out' has not changed.
-(rerunfilecheck)             Checksum: 7C0C2CE07B18A3051E5625A1BD6CF6B4;1219.
+[2] [3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 169.
+
+ (D:\LaTex_\tex/latex/base\omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 169.
+<1.png, id=68, 526.96875pt x 395.22656pt>
+File: 1.png Graphic file (type png)
+<use 1.png>
+Package pdftex.def Info: 1.png  used on input line 184.
+(pdftex.def)             Requested size: 368.8756pt x 276.6567pt.
+<2.png, id=70, 526.96875pt x 395.22656pt>
+File: 2.png Graphic file (type png)
+<use 2.png>
+Package pdftex.def Info: 2.png  used on input line 190.
+(pdftex.def)             Requested size: 368.8756pt x 276.6567pt.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 199.
+[4 <./1.png>] [5 <./2.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 199.
+ (result_6.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 199.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 199.
+Package rerunfilecheck Info: File `result_6.out' has not changed.
+(rerunfilecheck)             Checksum: 75F7CFD2C16AD9ACA63B436DF22DC492;415.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 199.
  ) 
 Here is how much of TeX's memory you used:
- 10668 strings out of 492898
- 142739 string characters out of 3141839
- 234117 words of memory out of 3000000
- 14407 multiletter control sequences out of 15000+200000
- 21778 words of font info for 53 fonts, out of 3000000 for 9000
+ 10666 strings out of 492898
+ 142512 string characters out of 3141839
+ 233034 words of memory out of 3000000
+ 14404 multiletter control sequences out of 15000+200000
+ 20230 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,8n,31p,1763b,375s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,9n,31p,841b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/LaTex_/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<D:/LaTex_/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/LaTex_/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmr12.pf
-b><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/LaTex_/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-<D:/LaTex_/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/LaTex_/fonts/type
-1/public/cm-super/sfbi1728.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfbx1095.
-pfb><D:/LaTex_/fonts/type1/public/cm-super/sfbx1200.pfb><D:/LaTex_/fonts/type1/
-public/cm-super/sfbx1440.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfbx1728.pf
-b><D:/LaTex_/fonts/type1/public/cm-super/sfrm0800.pfb><D:/LaTex_/fonts/type1/pu
-blic/cm-super/sfrm1095.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfrm1200.pfb>
-<D:/LaTex_/fonts/type1/public/cm-super/sfrm1440.pfb><D:/LaTex_/fonts/type1/publ
-ic/cm-super/sfrm1728.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfsl1000.pfb><D
-:/LaTex_/fonts/type1/public/cm-super/sfti1200.pfb><D:/LaTex_/fonts/type1/public
-/cm-super/sfti1440.pfb>
-Output written on result.pdf (6 pages, 596008 bytes).
+ublic/amsfonts/cm/cmex10.pfb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmmi12.p
+fb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/LaTex_/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmr12.pfb
+><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/LaTex_/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb><D:/LaTex_/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+D:/LaTex_/fonts/type1/public/amsfonts/symbols/msbm10.pfb><D:/LaTex_/fonts/type1
+/public/cm-super/sfbi1728.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfbx1095.p
+fb><D:/LaTex_/fonts/type1/public/cm-super/sfbx1200.pfb><D:/LaTex_/fonts/type1/p
+ublic/cm-super/sfbx1440.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfbx1728.pfb
+><D:/LaTex_/fonts/type1/public/cm-super/sfrm0800.pfb><D:/LaTex_/fonts/type1/pub
+lic/cm-super/sfrm1095.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfrm1200.pfb><
+D:/LaTex_/fonts/type1/public/cm-super/sfrm1440.pfb><D:/LaTex_/fonts/type1/publi
+c/cm-super/sfrm1728.pfb><D:/LaTex_/fonts/type1/public/cm-super/sfsl1000.pfb><D:
+/LaTex_/fonts/type1/public/cm-super/sfti1200.pfb><D:/LaTex_/fonts/type1/public/
+cm-super/sfti1440.pfb>
+Output written on result_6.pdf (5 pages, 595015 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 160 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 500000)
+ 60 words of extra memory for PDF output out of 10000 (max. 10000000)
 

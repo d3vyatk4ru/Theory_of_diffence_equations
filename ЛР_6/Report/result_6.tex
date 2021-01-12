@@ -1,0 +1,199 @@
+%%  A report on laboratory work 2.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,a4paper]{article}
+
+%%  Стандартные языковые команды
+\usepackage[cp1251]{inputenc}
+\usepackage[russian]{babel}
+
+%%  Подключение стилевого файла отчета
+\usepackage{kprj}
+
+%%   Подключение пакета управления гиперссылками (только для pdftex)
+\ifpdftex
+   \usepackage[unicode=true]{hyperref}
+   \hypersetup{pdfpagemode=UseNone, pdfstartview = FitR 0 0 200 1000}
+   \BlackColorLinks
+\fi
+
+%%%  Для подключения рисунков (разные форматы при разном компилировании)
+\ifpdftex
+  \DeclareGraphicsExtensions{.pdf}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+
+\LabWork                      %   тип документа -- лабораторная работа
+\LabWorkNo{6}                 %   номер лабораторной работы
+\variant{4}                   %   вариант лабораторной
+
+
+%%%  Данные для оформления
+
+\author{Д.Д.~Девяткин}                     %   автор
+\workyear{2020}                         %   год выполнения работы
+\title{Задача локализации}   %  название
+\discipline{Качественная теория ОДУ}              %  учебная дисциплина
+\group{ФН12-71}                          %   группа
+\faculty{Фундаментальные науки}         %   Факультет
+\chair{Математическое моделирование}    %   кафедра
+\chief{А.Н.~Канатников}                     %   Руководитель работы
+
+\equationnumbering{section}             %   если нумерация формул в пределах раздела (иначе единая нумерация)
+%\figurenumbering{section}              %   (аналогично для рисунков)
+
+\begin{document}
+
+%%%   Формирование титульного листа
+\maketitle
+%  Для формирования содержания
+%\tableofcontents
+	
+
+\section*{Постановка задачи}
+Для заданной системы 3-го порядка и заданной локализирующей функции $\phi(x,y,z)$ решить задачу локализации.
+\section{Исходные данные}
+\begin{center}
+$\begin{cases}
+\dot{x} = 2.7y + z,\\
+\dot{y} = -x + y^2, \\
+\dot{z} = x + y,\\
+\end{cases}$ 
+\end{center}
+\begin{center}
+$\phi(x,y,z) = Ax + By + Cz.$
+\end{center}
+
+\section{Реализация}
+\textbf{Локализирюущим множеством} называют такое множество, которое содержит все инвариантные компакты рассматриваемой системы. По \textbf{теореме 6.2} знаем, что все инвариантные компакты рассматриваемой системы содержатся в множестве
+\begin{center}
+$\Omega_{\phi}= \{(x, y, z) : \phi_{inf} \leq \phi(x, y, z) \leq \phi_{sup}\}$, 
+\end{center}
+\begin{center}
+$\phi_{inf} = \inf\limits_{x \in S_\phi}\phi,\:\:\:\:\: \phi_{sup} = \sup\limits_{x \in S_\phi}\phi.$
+\end{center}
+Множество 
+\begin{center}
+$S_{\phi} = \{x \in X \subset \mathbb {R}: \dot{\phi} = 0\}$ 
+\end{center}
+рассматриваемой системы называют \textbf{универсальным сечением} системы.
+В итоге образуется задача поиска точной нижней $\phi_{inf}$ и точной верхней $\phi_{sup}$ граней функции $\phi(x, y, z)$ при условии $\dot{\phi} = 0$ (уравнение связи).\\
+Универсальным сечением в фазовом пространстве является:
+\begin{equation}
+A(2.7y + z) + B(-x + y^2) + C(x + y) = 0.
+\end{equation}
+Запишем это в систему и получим задачу:
+\begin{equation}
+\begin{cases}
+Ax + By + Cz \rightarrow extr,\\
+A(2.7y + z) + B(-x + y^2) + C(x + y) = 0.\\
+\end{cases}
+\end{equation}
+Если $A = 0$, то получаем следующее:
+\begin{equation}
+\begin{cases}
+By + Cz \rightarrow extr,\\
+B(-x + y^2) + C(x + y) = 0.\\
+\end{cases}
+\end{equation}
+
+Видно, что $z$ не входит в ограничение, положим $x = 0, y=0$, чтобы обеспечить выполнение ограничения, меняя $z$, получим, что $\phi_{inf} = -\infty$ и $\phi_{sup} =+\infty$.
+
+Теперь рассмотрим случай $A \neq 0$. Выразим из (2.1) переменную $z$:
+\begin{center}
+$z = \dfrac{x(B-C) - y(2.7A+By+C)}{A}$
+\end{center}
+Дальше подставим $z$ в первое уравнение системы (2.2)
+\begin{equation}
+(A+\dfrac{BC}{A}-\dfrac{C^2}{A})x - (2.7C - B +\dfrac{C^2}{A})y - \dfrac{BC}{A}y^2 \rightarrow extr
+\end{equation}
+
+Исходную задачу можно упросить умножив локализирующую функцию на некую константу, по скольку данная операция не изменит локализирующее множество. Поэтому умножим локализирующую функцию на $\dfrac{1}{A}$.
+\begin{equation*}
+(1+\dfrac{BC}{A^2}-\dfrac{C^2}{A^2})x - (2.7\dfrac{C}{A} - \dfrac{B}{A} +\dfrac{C^2}{A^2})y - \dfrac{BC}{A^2}y^2 \rightarrow extr
+\end{equation*}
+Введем замену $\tilde{B} = \dfrac{B}{A}, \tilde{C} = \dfrac{C}{A}$. Тогда получим следующее:
+\begin{equation}
+(1+\tilde{B}\tilde{C}-\tilde{C}^2)x - (2.7\tilde{C} - \tilde{B} +\tilde{C}^2)y - \tilde{B}\tilde{C}y^2 \rightarrow extr
+\end{equation}
+Это эквивалетно тому, что мы положим $A = 1$. Далее обратно переобозначим переменные $B:=\tilde{B}$ и $C:=\tilde{C}$ для простоты выкладок.
+
+Дальше найдем экстремумы функции (2.5). Если коэффициент при $x$ не нулевой, то зафиксировав $y$ и меняя только $x$, получим что $\phi_{inf} = -\infty$ и $\phi_{sup} =+\infty$, значит этот коэффициент равен нулю. Если положить, что $B=0$ или $C=0$, то получим аналогично $\phi_{inf} = -\infty$ и $\phi_{sup} =+\infty$. Этот случай не будем рассматривать. В итоге имеем следующее
+\begin{equation}
+\phi =  - (2.7C - B +C^2)y - BCy^2.
+\end{equation}
+Это уравнение описывает параболу.
+
+\begin{equation}
+\begin{cases}
+1+BC-C^2 = 0,\\
+B -2.7C -C^2 -2BCy = 0.
+\end{cases}\Rightarrow
+\begin{cases}
+B = \dfrac{C^2 - 1}{C} ,\\ \\
+y = \dfrac{-C^3 - 1.7C^2 - 1}{2C(C^2 - 1)}.
+\end{cases}
+\end{equation}
+
+Это уравнение описывает параболу. Дальше в (2.6) подставим параметр $B$, выраженный через $C$. Теперь это уравнение имеет вид:
+\begin{equation}
+\phi =  - (2.7C - \dfrac{C^2 - 1}{C} +C^2)y - (C^2 - 1)y^2 \rightarrow extr
+\end{equation}
+Дальше положим, что коэффициент при $y^2$ равен $p$, а коэффициент при $y$ равен $q$, тогда получим
+\begin{equation}
+\phi =  p y^2 + q y
+\end{equation}
+Если выделить квадрат в (2.9), то получим, что 
+\begin{equation}
+\phi_{extr} =  -\dfrac{q^2}{4p}
+\end{equation}
+% Дальше подставим $y$, выраженное черес $C$:
+% \begin{flushleft}
+% $ \phi=          
+%    \dfrac{100\,C^9+340\,C^8+189\,C^7-40\,C^6}{200\,C^2\,\left(C^2-1\right)} + $ 
+%     \begin{flushright}
+%       $+ \dfrac{121\,C^5-100\,C^4+419\,C^3+70\,C^2+170\,C+100}{200\,C^2\, \left(C^2-1\right)} = \beta(C)$
+%    \end{flushright}
+% \end{flushleft}
+Тогда обозначим
+\begin{equation}
+\beta(C) = -\dfrac{q(C)^2}{4p(C)}.
+\end{equation}
+
+
+
+Вернемся к уравнению (2.8). Если $C^2 - 1 = 0$, то получим  $\phi_{inf} = -\infty$ и $\phi_{sup} =+\infty$. Данный случай нас не интересует, поэтому получаем 2 исхода: $C^2 - 1 > 0$ или $C^2 - 1 < 0$. 
+\begin{itemize}
+\item $C^2 - 1 < 0 \Rightarrow$  у функции есть только минимум и $\phi(x, y, z)  \geq \phi_{inf}$. 
+\begin{flushleft}
+$\phi(x, y, z) \geq \phi_{inf} \Rightarrow x + \dfrac{C^2 - 1}{C}y + Cz \geq \beta(C)  \Rightarrow x \geq \beta(C) - \dfrac{C^2 - 1}{C}y - Cz$.
+\end{flushleft}
+
+
+\item $C^2 - 1 > 0 \Rightarrow$  у функции есть только максимум и $\phi(x, y, z) \leq \phi_{sup}$.
+\begin{flushleft}
+$\phi(x, y, z) \leq \phi_{sup} \Rightarrow x + \dfrac{C^2 - 1}{C}y + Cz \leq \beta(C)  \Rightarrow x \leq \beta(C) - \dfrac{C^2 - 1}{C}y - Cz$.\\
+
+\section{Построение}
+
+Строим сетку по оси $y$ и $z$ с одинаковым шагом $h = 0.1$. Аналогично для параметра $C$, но в силу условий рассматриваем 2 ситуации: $C \in (-1, 1)$ и $C \in (-\infty, -1) \cup (1, +\infty)$. Для первого условия в каждой точке находим максимум по сетке на интервале (-1, 1), для второго находим максимум на $(-\infty, -1) \cup (1, +\infty)$. Во втором случае используем разрывную сетку.
+
+\begin{figure}[h!]
+  \centerline{\includegraphics[scale=0.7]{1.png}}
+  \vskip2mm
+  \caption{Пересечение семейства локализирующих множеств и аттрактор.}
+\end{figure} 
+
+\begin{figure}[h!]
+  \centerline{\includegraphics[scale=0.7]{2.png}}
+  \vskip2mm
+  \caption{Пересечение семейства локализирующих множеств и аттрактор.}
+\end{figure} 
+
+\end{flushleft}
+\end{itemize}
+
+
+\end{document}
